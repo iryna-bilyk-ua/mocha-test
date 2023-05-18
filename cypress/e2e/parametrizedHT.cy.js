@@ -1,6 +1,6 @@
 describe('HT', () => {
 
-    const testLayouts = (testData, expectedResult) => 
+    const testLayouts = (firstName, lastName, email, website) => 
 
     function () {
         cy.visit('https://sanitarskyi-ngx-admin.herokuapp.com/');
@@ -8,20 +8,19 @@ describe('HT', () => {
         cy.get('span.ng-tns-c141-9').click ();
         cy.get('span.ng-tns-c141-11').click ();
         cy.wait(2000);
-        cy.get('#inputFirstName').type(`${testData}`);
-        cy.get('#inputFirstName').should('contain.value', `${expectedResult}`);
-        cy.get('#inputLastName').type(`${testData}`);
-        cy.get('#inputLastName').should('contain.value', `${expectedResult}`);
-        cy.get('#inputEmail').type(`${testData}`);
-        cy.get('#inputEmail').should('contain.value', `${expectedResult}`);
-        cy.get('#inputWebsite').type(`${testData}`);
-        cy.get('#inputWebsite').should('contain.value', `${expectedResult}`)
+        cy.get('#inputFirstName').type(firstName);
+        cy.get('#inputFirstName').should('contain.value', firstName);
+        cy.get('#inputLastName').type(lastName);  
+        cy.get('#inputLastName').should('contain.value', lastName);
+        cy.get('#inputEmail').type(email);
+        cy.get('#inputEmail').should('contain.value', email);
+        cy.get('#inputWebsite').type(website);
+        cy.get('#inputWebsite').should('contain.value', website)
     };
 
-it('search for first name', testLayouts('Iryna', 'Iryna'));
-it('search for last name', testLayouts('Bilyk', 'Bilyk'));
-it('search for email', testLayouts('bilyk.iren@gmail.com', 'bilyk.iren@gmail.com'));
-it('search for website', testLayouts('bilyk.iren.com', 'bilyk.iren.com'));
+    it('user1', testLayouts('Iryna', 'Bilyk', 'testmail@mail.com', 'testwebsite.com'));
+    it('user2', testLayouts('Alex', 'Malyshenko', 'testmail1@mail.com', 'testwebsite1.com'));
+
 })
 
 // describe('HT', () => {
